@@ -42,16 +42,16 @@ Version 3.0 features a number of changes to existing behavior. See [Updating](#u
 Using npm:
 
 ```shell
-npm install --save react-native-video
+npm install --save rn-video
 ```
 
 or using yarn:
 
 ```shell
-yarn add react-native-video
+yarn add rn-video
 ```
 
-Then follow the instructions for your platform to link react-native-video into your project:
+Then follow the instructions for your platform to link rn-video into your project:
 
 ### iOS installation
 <details>
@@ -65,7 +65,7 @@ Run `npx pod-install`. Linking is not required in React Native 0.60 and above.
 
 **React Native 0.59 and below**
 
-Run `react-native link react-native-video` to link the react-native-video library.
+Run `react-native link rn-video` to link the rn-video library.
 
 #### Using CocoaPods (required to enable caching)
 
@@ -77,7 +77,7 @@ Video only:
 
 ```diff
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
-+  `pod 'react-native-video', :path => '../node_modules/react-native-video/react-native-video.podspec'`
++  `pod 'rn-video', :path => '../node_modules/rn-video/react-native-video.podspec'`
 end
 ```
 
@@ -85,7 +85,7 @@ Video with caching ([more info](docs/caching.md)):
 
 ```diff
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
-+  `pod 'react-native-video/VideoCaching', :path => '../node_modules/react-native-video/react-native-video.podspec'`
++  `pod 'rn-video/VideoCaching', :path => '../node_modules/rn-video/rn-video.podspec'`
 end
 ```
 
@@ -95,7 +95,7 @@ end
   <details>
   <summary>tvOS details</summary>
 
-`react-native link react-native-video` doesn’t work properly with the tvOS target so we need to add the library manually.
+`react-native link rn-video` doesn’t work properly with the tvOS target so we need to add the library manually.
 
 First select your project in Xcode.
 
@@ -119,7 +119,7 @@ Select RCTVideo-tvOS
   <summary>Android details</summary>
  
 Linking is not required in React Native 0.60 and above.
-If your project is using React Native < 0.60, run `react-native link react-native-video` to link the react-native-video library.
+If your project is using React Native < 0.60, run `react-native link rn-video` to link the rn-video library.
 
 Or if you have trouble, make the following additions to the given files manually:
 
@@ -128,15 +128,15 @@ Or if you have trouble, make the following additions to the given files manually
 The newer ExoPlayer library will work for most people.
 
 ```gradle
-include ':react-native-video'
-project(':react-native-video').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-video/android-exoplayer')
+include ':rn-video'
+project(':rn-video').projectDir = new File(rootProject.projectDir, '../node_modules/rn-video/android-exoplayer')
 ```
 
 If you need to use the old Android MediaPlayer based player, use the following instead:
 
 ```gradle
-include ':react-native-video'
-project(':react-native-video').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-video/android')
+include ':rn-video'
+project(':rn-video').projectDir = new File(rootProject.projectDir, '../node_modules/rn-video/android')
 ```
 
 #### **android/app/build.gradle**
@@ -146,7 +146,7 @@ From version >= 5.0.0, you have to apply these changes:
 ```diff
 dependencies {
    ...
-    compile project(':react-native-video')
+    compile project(':rn-video')
 +   implementation "androidx.appcompat:appcompat:1.0.0"
 -   implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
 
@@ -191,7 +191,7 @@ protected List<ReactPackage> getPackages() {
 
 **React Native Windows 0.63 and above**
 
-Autolinking should automatically add react-native-video to your app.
+Autolinking should automatically add rn-video to your app.
 
 #### Manual Linking
 
@@ -205,7 +205,7 @@ Add the _ReactNativeVideoCPP_ project to your solution (eg. `windows\myapp.sln`)
 
 1. Open your solution in Visual Studio 2019
 2. Right-click Solution icon in Solution Explorer > Add > Existing Project...
-3. Select `node_modules\react-native-video\windows\ReactNativeVideoCPP\ReactNativeVideoCPP.vcxproj`
+3. Select `node_modules\rn-video\windows\ReactNativeVideoCPP\ReactNativeVideoCPP.vcxproj`
 
 ##### **windows\myapp\myapp.vcxproj**
 
@@ -242,7 +242,7 @@ Import RCTVideoManager and add it to the list of nativeModules:
 ```javascript
 import { RNDomInstance } from "react-native-dom";
 import { name as appName } from "../app.json";
-import RCTVideoManager from 'react-native-video/dom/RCTVideoManager'; // Add this
+import RCTVideoManager from 'rn-video/dom/RCTVideoManager'; // Add this
 
 // Path to RN Bundle Entrypoint ================================================
 const rnBundlePath = "./entry.bundle?platform=dom&dev=true";
@@ -260,7 +260,7 @@ const ReactNativeDomOptions = {
 ```javascript
 // Load the module
 
-import Video from 'react-native-video';
+import Video from 'rn-video';
 
 // Within your render function, assuming you have a file called
 // "background.mp4" in your project. You can include multiple videos
@@ -417,9 +417,9 @@ Determines whether to show player controls.
 
 Note on iOS, controls are always shown when in fullscreen mode.
 
-For Android MediaPlayer, you will need to build your own controls or use a package like [react-native-video-controls](https://github.com/itsnubix/react-native-video-controls) or [react-native-video-player](https://github.com/cornedor/react-native-video-player).
+For Android MediaPlayer, you will need to build your own controls or use a package like [rn-video-controls](https://github.com/itsnubix/rn-video-controls) or [rn-video-player](https://github.com/cornedor/rn-video-player).
 
-Note on Android ExoPlayer, native controls are available by default. If needed, you can also add your controls or use a package like [react-native-video-controls].
+Note on Android ExoPlayer, native controls are available by default. If needed, you can also add your controls or use a package like [rn-video-controls].
 
 Platforms: Android ExoPlayer, iOS, react-native-dom
 
@@ -1305,7 +1305,7 @@ For more detailed info check this [article](https://cocoacasts.com/how-to-add-ap
 
 ### Audio Mixing
 
-At some point in the future, react-native-video will include an Audio Manager for configuring how videos mix with other apps playing sounds on the device.
+At some point in the future, rn-video will include an Audio Manager for configuring how videos mix with other apps playing sounds on the device.
 
 On iOS, if you would like to allow other apps to play music over your video component, make the following change:
 
@@ -1357,12 +1357,12 @@ To enable audio to play in background on iOS the audio session needs to be set t
 
 ## Examples
 
-- See an [Example integration][1] in `react-native-login` *note that this example uses an older version of this library, before we used `export default` -- if you use `require` you will need to do `require('react-native-video').default` as per instructions above.*
+- See an [Example integration][1] in `react-native-login` *note that this example uses an older version of this library, before we used `export default` -- if you use `require` you will need to do `require('rn-video').default` as per instructions above.*
 - Try the included [VideoPlayer example][2] yourself:
 
    ```sh
-   git clone git@github.com:react-native-community/react-native-video.git
-   cd react-native-video/example
+   git clone git@github.com:vobachnhac1/rn-video.git
+   cd rn-video/example
    npm install
    open ios/VideoPlayer.xcodeproj
 
@@ -1390,7 +1390,7 @@ From version >= 5.0.0, you have to apply this changes:
 ```diff
 dependencies {
    ...
-    compile project(':react-native-video')
+    compile project(':rn-video')
 +   implementation "androidx.appcompat:appcompat:1.0.0"
 -   implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
 
@@ -1447,7 +1447,7 @@ Note, Windows does not have a concept of an app going into the background, so th
 #### Use Android target SDK 27 by default
 Version 3.0 updates the Android build tools and SDK to version 27. React Native is in the process of [switchting over](https://github.com/facebook/react-native/issues/18095#issuecomment-395596130) to SDK 27 in preparation for Google's requirement that new Android apps [use SDK 26](https://android-developers.googleblog.com/2017/12/improving-app-security-and-performance.html) by August 2018.
 
-You will either need to install the version 27 SDK and version 27.0.3 buildtools or modify your build.gradle file to configure react-native-video to use the same build settings as the rest of your app as described below.
+You will either need to install the version 27 SDK and version 27.0.3 buildtools or modify your build.gradle file to configure rn-video to use the same build settings as the rest of your app as described below.
 
 ##### Using app build settings
 You will need to create a `project.ext` section in the top-level build.gradle file (not app/build.gradle). Fill in the values from the example below using the values found in your app/build.gradle file.
@@ -1480,7 +1480,6 @@ If you encounter an error `Could not find com.android.support:support-annotation
 - [ ] Bring API closer to HTML5 `<Video>` [reference](http://devdocs.io/html/element/video)
 
 [1]: https://github.com/brentvatne/react-native-login/blob/56c47a5d1e23781e86e19b27e10427fd6391f666/App/Screens/UserInfoScreen.js#L32-L35
-[2]: https://github.com/react-native-community/react-native-video/tree/master/example
 [3]: https://developer.apple.com/library/ios/qa/qa1668/_index.html
 
 ---
