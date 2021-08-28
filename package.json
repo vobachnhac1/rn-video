@@ -1,6 +1,6 @@
 {
     "name": "rn-video",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A <Video /> element for react-native",
     "main": "Video.js",
     "license": "MAL",
@@ -28,6 +28,7 @@
     "dependencies": {
         "keymirror": "^0.1.1",
         "prop-types": "^15.7.2",
+        "rn-video": "^1.0.0",
         "shaka-player": "^2.5.9"
     },
     "scripts": {
